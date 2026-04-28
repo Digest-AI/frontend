@@ -30,6 +30,10 @@ export const WORKFLOWS: { [key: string]: Workflow } = {
         whom: "recommendations-service",
         what: "All events parsed on specific-date",
       },
+      {
+        whom: "tg-service",
+        what: "All events parsed on date-range",
+      },
     ],
   },
   "recommendations-service": {
@@ -38,28 +42,33 @@ export const WORKFLOWS: { [key: string]: Workflow } = {
         who: "parser-service",
         what: "All events parsed on today",
       },
-      {
-        who: "tg-service",
-        what: "All new recommendations",
-      },
     ],
     responds: [
       {
         whom: "frontend",
         what: "CRUD on user, Readonly on recommendations",
       },
+      {
+        whom: "tg-service",
+        what: "All new recommendations",
+      },
     ],
   },
   "tg-service": {
-    requests: [],
+    requests: [
+      {
+        who: "parser-service",
+        what: "All new recommendations",
+      },
+      {
+        who: "recommendations-service",
+        what: "All new recommendations",
+      },
+    ],
     responds: [
       {
         whom: "frontend",
         what: "CRUD on user, verification code",
-      },
-      {
-        whom: "recommendations-service",
-        what: "All recommendations sent to telegram (transfers recommendations)",
       },
     ],
   },
