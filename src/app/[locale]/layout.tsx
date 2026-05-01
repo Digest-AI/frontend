@@ -2,6 +2,7 @@
 
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { redirect, routing } from "@/i18n";
+import { Footer, Header } from "@/components/layout";
 
 //mui components
 import Stack from "@mui/material/Stack";
@@ -21,19 +22,24 @@ export default async function RootLayout({
 }: RootLayoutProps) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
-    await redirect("/en");
+    await redirect("/");
   }
 
   return (
-    <NextIntlClientProvider>
-      <Stack
-        id="main"
-        component="main"
-        sx={{
-          minHeight: "100%",
-        }}
-      >
-        {children}
+    <NextIntlClientProvider locale={locale}>
+      <Stack spacing={0} sx={{ minHeight: "100%" }}>
+        <Header />
+        <Stack
+          id="main"
+          component="main"
+          sx={{
+            flex: 1,
+            minHeight: "100%",
+          }}
+        >
+          {children}
+        </Stack>
+        <Footer />
       </Stack>
     </NextIntlClientProvider>
   );

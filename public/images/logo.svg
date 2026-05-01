@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- Background gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#1a1f2e"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </radialGradient>
+
+    <!-- D shape gradient -->
+    <linearGradient id="dGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#0099cc"/>
+      <stop offset="100%" stop-color="#005fa3"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Subtle glow for dots -->
+    <filter id="dotGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Clip path for rounded square -->
+    <clipPath id="roundedSquare">
+      <rect width="400" height="400" rx="88" ry="88"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" rx="88" ry="88" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid texture -->
+  <g clip-path="url(#roundedSquare)" opacity="0.04">
+    <line x1="0" y1="50" x2="400" y2="50" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="0" y1="100" x2="400" y2="100" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="0" y1="150" x2="400" y2="150" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="0" y1="200" x2="400" y2="200" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="0" y1="250" x2="400" y2="250" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="0" y1="300" x2="400" y2="300" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="0" y1="350" x2="400" y2="350" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="50" y1="0" x2="50" y2="400" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="100" y1="0" x2="100" y2="400" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="150" y1="0" x2="150" y2="400" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="400" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="250" y1="0" x2="250" y2="400" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="300" y1="0" x2="300" y2="400" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="350" y1="0" x2="350" y2="400" stroke="#00d4ff" stroke-width="1"/>
+  </g>
+
+  <!-- Ambient glow behind D -->
+  <ellipse cx="205" cy="200" rx="110" ry="110" fill="#00d4ff" opacity="0.06"/>
+
+  <!-- Letter D - main shape -->
+  <g filter="url(#glow)">
+    <!-- D outline path: left vertical bar + rounded right -->
+    <path d="
+      M 118 108
+      L 118 292
+      L 188 292
+      C 268 292 310 254 310 200
+      C 310 146 268 108 188 108
+      Z
+    " fill="url(#dGrad)" opacity="1"/>
+
+    <!-- Inner cutout to make D hollow/open -->
+    <path d="
+      M 152 140
+      L 185 140
+      C 248 140 274 163 274 200
+      C 274 237 248 260 185 260
+      L 152 260
+      Z
+    " fill="#0d1117"/>
+
+    <!-- Inner fill — slightly lighter dark so it reads as a hollow D -->
+    <path d="
+      M 152 140
+      L 185 140
+      C 248 140 274 163 274 200
+      C 274 237 248 260 185 260
+      L 152 260
+      Z
+    " fill="#111827" opacity="0.95"/>
+  </g>
+
+  <!-- AI dots — three horizontal dots inside the D curve -->
+  <g filter="url(#dotGlow)">
+    <circle cx="188" cy="190" r="7" fill="#00d4ff" opacity="0.95"/>
+    <circle cx="215" cy="200" r="5" fill="#00d4ff" opacity="0.7"/>
+    <circle cx="238" cy="200" r="3.5" fill="#00d4ff" opacity="0.45"/>
+  </g>
+
+  <!-- Accent line top of D -->
+  <line x1="118" y1="108" x2="188" y2="108" stroke="#00d4ff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+  <!-- Accent line bottom of D -->
+  <line x1="118" y1="292" x2="188" y2="292" stroke="#00d4ff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- Subtle border -->
+  <rect width="400" height="400" rx="88" ry="88" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0.12"/>
+</svg>
