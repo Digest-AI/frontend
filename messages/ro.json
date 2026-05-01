@@ -6,7 +6,8 @@
     "navTelegram": "Telegram",
     "themeToggleAria": "Temă luminos sau întunecat",
     "languageAria": "Limba",
-    "loginAria": "Autentificare"
+    "loginAria": "Autentificare",
+    "profileAria": "Profil"
   },
   "Footer": {
     "brand": "Digest.ai",
@@ -88,6 +89,7 @@
     "empty": "Nu s-au găsit evenimente.",
     "loadError": "Lista nu a putut fi încărcată. Încercați mai târziu.",
     "metaError": "Categoriile și sursele nu au putut fi încărcate. Unele filtre nu sunt disponibile.",
+    "paginationAria": "Navigare pe paginile listei",
     "period": {
       "this-week": "Săptămâna aceasta",
       "today": "Astăzi",
@@ -97,6 +99,76 @@
       "next-month": "Lună",
       "next-3-months": "3 luni"
     }
+  },
+  "RecommendationsPage": {
+    "forYou": "Special pentru tine",
+    "title": "Recomandări",
+    "subtitle": "Selecție în funcție de interesele și setările din profil.",
+    "onlyNew": "Doar noi",
+    "newBadge": "Nou",
+    "goToProfile": "Setează profilul",
+    "loadRecsError": "Recomandările nu au putut fi încărcate. Încercați din nou.",
+    "loadEventsError": "Evenimentele nu au putut fi încărcate. Reîmprospătați pagina.",
+    "empty": "Încă nu există recomandări. Completați preferințele în profil.",
+    "emptyNew": "Acum nu sunt recomandări noi. Reveniți mai târziu sau consultați lista completă.",
+    "retry": "Reîncearcă"
+  },
+  "Profile": {
+    "title": "Profil",
+    "email": "Email",
+    "changeEmail": "Schimbă adresa de email",
+    "password": "Parolă",
+    "passwordMasked": "••••••••",
+    "passwordHint": "Parola nu este afișată din motive de securitate.",
+    "changePassword": "Schimbă parola",
+    "verified": "Email verificat",
+    "unverified": "Email neverificat",
+    "sectionAccount": "Cont",
+    "sectionPreferences": "Preferințe",
+    "preferencesIntro": "Setări pentru recomandări personalizate de evenimente.",
+    "preferencesLoadError": "Nu s-au putut încărca preferințele: {message}",
+    "name": "Prenume",
+    "surname": "Nume",
+    "age": "Vârsta",
+    "ageInvalid": "Introduceți o vârstă validă.",
+    "nameRequired": "Completați prenumele și numele.",
+    "gender": "Gen",
+    "genderOptions": {
+      "male": "Masculin",
+      "female": "Feminin",
+      "other": "Altul",
+      "unspecified": "Nu indic"
+    },
+    "interestsTitle": "Categorii",
+    "categoriesTapHint": "Atingeți o categorie într-un bloc pentru a o muta în celălalt.",
+    "categoriesSelectedTitle": "Selectate",
+    "categoriesUnselectedTitle": "Neselectate",
+    "categoriesSelectedEmpty": "Încă nimic selectat — alegeți din blocul de mai jos.",
+    "categoriesUnselectedEmpty": "Toate categoriile sunt selectate — atingeți un chip de mai sus pentru a elimina.",
+    "consentBlockTitle": "Acord privind prelucrarea datelor",
+    "consentBlockIntro": "La prima salvare a preferințelor este necesar acordul explicit (nu se trimite pe server, doar confirmare în interfață).",
+    "maxPrice": "Preț maxim (MDL)",
+    "maxPriceInvalid": "Introduceți un preț maxim valid.",
+    "freeOnly": "Doar evenimente gratuite",
+    "personalDataConsent": "Sunt de acord cu prelucrarea datelor personale în scopul personalizării recomandărilor",
+    "categoryLabels": {
+      "movie": "Film",
+      "other": "Altele",
+      "concert": "Concerte",
+      "theatre": "Teatru",
+      "sport": "Sport",
+      "party": "Petreceri",
+      "kids": "Copii",
+      "training": "Formare"
+    },
+    "saveAccount": "Salvează contul",
+    "savingAccount": "Se salvează contul…",
+    "savedAccount": "Datele contului au fost salvate.",
+    "saveErrorAccount": "Datele contului nu au putut fi salvate.",
+    "savePreferences": "Salvează preferințele",
+    "savingPreferences": "Se salvează preferințele…",
+    "savedPreferences": "Preferințele au fost salvate.",
+    "saveErrorPreferences": "Preferințele nu au putut fi salvate."
   },
   "Auth": {
     "login": {

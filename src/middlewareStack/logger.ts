@@ -1,7 +1,7 @@
-const DEBUG = false;
+const DEBUG = true;
 
 export const maskToken = (token?: string) => {
-  if (!token) return 'undefined';
+  if (!token) return "undefined";
   return `${token.slice(0, 6)}…${token.slice(-6)}`;
 };
 

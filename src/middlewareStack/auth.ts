@@ -6,15 +6,20 @@ import {
   updateResponseTokens,
 } from "@/utils/cookies";
 import { logger, maskToken } from "./logger";
+import { ITokens } from "@/types";
 
 const AUTH_URL = process.env.NEXT_PUBLIC_USER_URL!;
 
 const log = logger("auth");
 
+const protectedRoutes = ["profile", "recommendations"];
+
 export const authMiddlewareFactory: MiddlewareFactory = (next) => {
   return async (request: NextRequest, _next: NextFetchEvent) => {
     const pathname = request.nextUrl.pathname;
-    const requiresAuth = pathname.includes("/profile");
+    const requiresAuth = protectedRoutes.some((route) =>
+      pathname.includes(route),
+    );
 
     if (!requiresAuth) {
       return next(request, _next);
@@ -58,7 +63,7 @@ export const authMiddlewareFactory: MiddlewareFactory = (next) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ refresh: tokens.refresh }),
+          body: JSON.stringify({ refreshToken: tokens.refresh }),
         });
 
         if (!refreshRes.ok) {
@@ -68,14 +73,14 @@ export const authMiddlewareFactory: MiddlewareFactory = (next) => {
           });
           return createAuthRedirect(request);
         }
-        const refreshedTokens = await refreshRes.json();
+        const refreshedTokens: ITokens = await refreshRes.json();
         if (!refreshedTokens) {
           return createAuthRedirect(request);
         }
         await updateResponseTokens(response, refreshedTokens);
         log.info("set new access and refresh tokens (token rotation)", {
-          access: maskToken(refreshedTokens.access),
-          refresh: maskToken(refreshedTokens.refresh),
+          access: maskToken(refreshedTokens.accessToken),
+          refresh: maskToken(refreshedTokens.refreshToken),
         });
       } catch (error) {
         log.error("refresh request threw", { error });

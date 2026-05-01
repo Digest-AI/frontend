@@ -6,11 +6,12 @@ import {
   sendLoginRequest,
   sendSignupRequest,
   sendRestoreRequest,
-  sendVerificationRequest,
+  sendEmailVerificationRequest,
+  sendPasswordVerificationRequest,
   sendLogoutRequest,
 } from "@/requests";
 import { deletePublicId, deleteTokens, setTokens } from "./token";
-import { ITokens, IVerificationRequired, IError } from "@/types";
+import type { ITokens, IVerificationRequired, IError } from "@/types";
 import { isError } from "@/requests";
 
 type Validatable<T = string> = { value: T; error: string };
@@ -27,6 +28,7 @@ async function handleResponse(
   response: ITokens | IVerificationRequired | IError,
   state: AuthFormState,
 ): Promise<AuthFormState> {
+  console.error(JSON.stringify(response, null, 2));
   if (isError(response)) {
     switch (response.attr) {
       case "email":
@@ -39,7 +41,7 @@ async function handleResponse(
       case "code":
         return { ...state, code: { ...state.code, error: response.detail } };
       default:
-        await redirect("/error");
+        //await redirect("/error");
         break;
     }
   } else if ("purpose" in response) {
@@ -54,7 +56,7 @@ async function handleResponse(
     };
   } else {
     await setTokens(response as ITokens);
-    await redirect(state.type === "signup" ? "/core/settings" : "/core");
+    await redirect(state.type === "login" ? "/" : "/profile");
   }
   return state;
 }
@@ -65,13 +67,19 @@ export async function dispatchAuthAction(
   let response: ITokens | IVerificationRequired | IError;
   switch (state.type) {
     case "verification": {
-      response = await sendVerificationRequest({
-        email: state.email.value,
-        password: state.password.value,
-        code: state.code.value,
-        purpose: state.code.purpose,
-        rememberMe: state.rememberMe,
-      });
+      if (state.code.purpose === "verify_email") {
+        response = await sendEmailVerificationRequest({
+          email: state.email.value,
+          code: state.code.value,
+          rememberMe: state.rememberMe,
+        });
+      } else {
+        response = await sendPasswordVerificationRequest({
+          email: state.email.value,
+          code: state.code.value,
+          newPassword: state.password.value,
+        });
+      }
 
       if (isError(response) && response.code === 404) {
         return { ...state, type: "signup" };

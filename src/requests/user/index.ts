@@ -10,4 +10,8 @@ export {
 } from "./auth";
 export { sendLogoutRequest } from "./token";
 export { fetchAuthUser, updateAuthUser, deleteAuthUser } from "./user";
-export { sendCodeResendRequest, sendVerificationRequest } from "./verification";
+export {
+  sendCodeResendRequest,
+  sendEmailVerificationRequest,
+  sendPasswordVerificationRequest,
+} from "./verification";

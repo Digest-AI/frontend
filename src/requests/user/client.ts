@@ -1,11 +1,11 @@
-import { IError } from "@/types";
+import type { IError } from "@/types";
 import axios, { AxiosError } from "axios";
 import { getLocale } from "next-intl/server";
 import type { ResWithError } from "../core/serviceClient";
 import { getToken } from "@/app/actions";
 
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_AUTH_URL! + "/api/",
+  baseURL: process.env.NEXT_PUBLIC_USER_URL! + "api/",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
@@ -18,8 +18,27 @@ function handleError(error: unknown) {
     const status = error.response?.status ?? 500;
 
     if (error.response) {
+      if (Object.hasOwn(error.response.data, "message")) {
+        let attr = null;
+        if (error.response.data.message.includes("email")) {
+          attr = "email";
+        } else if (error.response.data.message.includes("password")) {
+          attr = "password";
+        } else if (error.response.data.message.includes("code")) {
+          attr = "code";
+        }
+        return {
+          code: status,
+          detail: error.response.data.message,
+          attr: attr,
+        };
+      }
       const errorData = error.response.data as IError;
-      return { code: status, detail: errorData.detail, attr: errorData.attr };
+      return {
+        code: status,
+        detail: errorData.detail,
+        attr: errorData.attr ?? null,
+      };
     }
 
     return { code: status, detail: "internal server error", attr: null };

@@ -1,8 +1,14 @@
-export type User = {
-  publicId: string;
-  preferences: string[];
+export type IUser = {
+  userId: string;
+  preferredCategories: string[];
+  preferredRawCategories: string[];
+  maxPrice: number;
+  freeOnly: boolean;
 };
 
-export type Recommendation = {
-  eventSlug: string;
+export type IRecommendation = {
+  rank: number;
+  score: number;
+  isNew: boolean;
+  eventId: number;
 };
