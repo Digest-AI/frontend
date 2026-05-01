@@ -67,6 +67,37 @@
       "createdAt": "Adăugat"
     }
   },
+  "Events": {
+    "title": "Evenimente",
+    "searchPlaceholder": "Căutare după nume, descriere, loc…",
+    "sortLabel": "Sortare",
+    "sortDateDesc": "Mai întâi cele mai noi după dată",
+    "sortDateAsc": "Mai întâi cele mai vechi după dată",
+    "sortPriceAsc": "Preț: crescător",
+    "sortPriceDesc": "Preț: descrescător",
+    "advancedTitle": "Filtre suplimentare",
+    "category": "Categorie",
+    "provider": "Sursă",
+    "place": "Loc",
+    "dateFrom": "De la data",
+    "dateTo": "Până la data",
+    "priceMin": "Preț de la (MDL)",
+    "priceMax": "Preț până la (MDL)",
+    "all": "Toate",
+    "clearFilters": "Resetează filtrele",
+    "empty": "Nu s-au găsit evenimente.",
+    "loadError": "Lista nu a putut fi încărcată. Încercați mai târziu.",
+    "metaError": "Categoriile și sursele nu au putut fi încărcate. Unele filtre nu sunt disponibile.",
+    "period": {
+      "this-week": "Săptămâna aceasta",
+      "today": "Astăzi",
+      "upcoming": "În curând",
+      "next-7-days": "7 zile",
+      "next-14-days": "14 zile",
+      "next-month": "Lună",
+      "next-3-months": "3 luni"
+    }
+  },
   "Auth": {
     "login": {
       "label": "Intrați în contul",

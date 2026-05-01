@@ -1,12 +1,12 @@
 export type IProvider = {
-  id: string;
+  id: number;
   slug: string;
   name: string;
   url: string;
 };
 
 export type ICategory = {
-  id: string;
+  id: number;
   slug: string;
   nameRu: string;
   nameRo: string;
