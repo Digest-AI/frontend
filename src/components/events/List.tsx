@@ -33,9 +33,10 @@ import { getProviderChipSx, hasProviderBrandColor } from "./providerStyle";
 
 export type EventListProps = {
   events: IEvent[];
+  layoutGroupId?: string;
 };
 
-export function EventList({ events }: EventListProps) {
+export function EventList({ events, layoutGroupId }: EventListProps) {
   const locale = useLocale();
   const t = useTranslations("Landing");
   const [openId, setOpenId] = useState<number | null>(null);
@@ -85,7 +86,7 @@ export function EventList({ events }: EventListProps) {
   }, [openId, close]);
 
   return (
-    <LayoutGroup id="landing-events">
+    <LayoutGroup id={layoutGroupId ?? "landing-events"}>
       <Box
         sx={{
           display: "grid",

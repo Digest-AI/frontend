@@ -22,6 +22,39 @@ export type ServiceClient = {
   clearCache: () => Promise<void>;
 };
 
+function readAcceptLanguage(headers: unknown): string {
+  if (headers == null || typeof headers !== "object") return "";
+  const h = headers as { get?: (k: string) => unknown };
+  if (typeof h.get === "function") {
+    const v = h.get("Accept-Language");
+    if (typeof v === "string") return v;
+  }
+  const raw = (headers as Record<string, unknown>)["Accept-Language"];
+  return typeof raw === "string" ? raw : "";
+}
+
+function cacheRequestKey(request: {
+  method?: string;
+  url?: string;
+  params?: unknown;
+  headers?: unknown;
+}): string {
+  const method = request.method?.toLowerCase() ?? "get";
+  const url = request.url ?? "";
+  const lang = readAcceptLanguage(request.headers);
+  let paramsKey = "";
+  const raw = request.params;
+  if (raw && typeof raw === "object" && !Array.isArray(raw)) {
+    const entries = Object.entries(raw as Record<string, unknown>)
+      .filter(
+        ([, v]) => v !== undefined && v !== null && v !== "" && v !== false,
+      )
+      .sort(([a], [b]) => a.localeCompare(b));
+    paramsKey = JSON.stringify(entries);
+  }
+  return `${method}_${url}_${lang}_${paramsKey}`;
+}
+
 export function createServiceClient(config: ServiceConfig): ServiceClient {
   const api = setupCache(
     axios.create({
@@ -35,7 +68,14 @@ export function createServiceClient(config: ServiceConfig): ServiceClient {
     {
       storage: createNamespacedStorage(config.name),
       generateKey: (request) =>
-        `${request.method?.toLowerCase() ?? "get"}_${request.url}`,
+        cacheRequestKey(
+          request as {
+            method?: string;
+            url?: string;
+            params?: unknown;
+            headers?: unknown;
+          },
+        ),
       ttl: 1000 * 60 * 5, // 5 minutes
       interpretHeader: false,
       methods: ["get", "head", "options"],
