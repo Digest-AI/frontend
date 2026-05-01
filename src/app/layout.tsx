@@ -57,11 +57,18 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning className={roboto.variable}>
+    <html
+      suppressHydrationWarning
+      className={roboto.variable}
+      data-scroll-behavior="smooth"
+    >
       <body>
-        <InitColorSchemeScript attribute="[data-theme='%s']" />
+        <InitColorSchemeScript
+          attribute="[data-theme='%s']"
+          defaultMode="dark"
+        />
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
+          <ThemeProvider theme={theme} defaultMode="dark">
             <CssBaseline />
             {children}
           </ThemeProvider>

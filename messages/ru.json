@@ -1,1 +1,156 @@
-{}
+{
+  "Header": {
+    "brand": "Digest.ai",
+    "navEvents": "Мероприятия",
+    "navRecommendations": "Рекомендации",
+    "navTelegram": "Телеграм",
+    "themeToggleAria": "Светлая или тёмная тема",
+    "languageAria": "Язык",
+    "loginAria": "Войти"
+  },
+  "Footer": {
+    "brand": "Digest.ai",
+    "tagline": "Афиша и билеты на события рядом с вами.",
+    "contactTitle": "Контакты",
+    "emailLabel": "Эл. почта",
+    "phoneLabel": "Телефон",
+    "contactEmail": "hello@digest.ai",
+    "contactPhoneRaw": "+37360111222",
+    "contactPhoneDisplay": "+373 60 111 222",
+    "followTitle": "Соцсети",
+    "telegramUrl": "https://t.me/TheDigestAIBot",
+    "telegramAria": "Digest AI в Telegram",
+    "facebookUrl": "https://www.facebook.com/",
+    "facebookAria": "Digest AI на Facebook",
+    "instagramUrl": "https://www.instagram.com/",
+    "instagramAria": "Digest AI в Instagram",
+    "providersTitle": "Источники событий",
+    "copyright": "Все права защищены.",
+    "privacy": "Конфиденциальность",
+    "terms": "Условия использования"
+  },
+  "Landing": {
+    "title": "Digest AI",
+    "tagline": "Любое мероприятие рядом с вами уже сегодня — концерты, встречи, премьеры в один клик.",
+    "ctaEvents": "Смотреть мероприятия",
+    "ctaRegister": "Зарегистрироваться",
+    "ctaLearnMore": "Узнать больше",
+    "providersTitle": "Провайдеры событий",
+    "providersIntro1": "Digest AI собирает афишу с проверенных площадок и помогает не пропустить интересные события рядом с вами.",
+    "providersIntro2": "Наши алгоритмы учитывают ваши предпочтения и предлагают персональные рекомендации — концерты, встречи, кино и многое другое.",
+    "providersIntro3": "Выбирайте то, что откликается именно вам, и переходите к билетам в один клик.",
+    "eventsTitle": "События на ближайшие 7 дней",
+    "eventsEmpty": "Пока нет событий на этой неделе.",
+    "eventsSeeMore": "Смотреть другие",
+    "recommendationsTitle": "Персональные рекомендации",
+    "recommendationsHint": "Войдите в аккаунт — мы подберём для вас события с учётом интересов и предпочтений.",
+    "recommendationsLogin": "Войти",
+    "eventFields": {
+      "openDetails": "Подробнее о событии",
+      "close": "Закрыть",
+      "slug": "Слаг",
+      "url": "Страница события",
+      "dates": "Даты",
+      "dateStart": "Начало",
+      "dateEnd": "Окончание",
+      "location": "Место",
+      "address": "Адрес",
+      "place": "Площадка",
+      "city": "Город",
+      "price": "Цена",
+      "provider": "Провайдер",
+      "providerSite": "Сайт провайдера",
+      "categories": "Категории",
+      "description": "Описание",
+      "externalId": "Внешний ID",
+      "ticketsUrl": "Билеты",
+      "createdAt": "Добавлено"
+    }
+  },
+  "Auth": {
+    "login": {
+      "label": "Войти в аккаунт",
+      "redirect_labels": {
+        "email": "Впервые тут? Создайте аккаунт!",
+        "password": "Забыли пароль?"
+      },
+      "submit": "Войти"
+    },
+    "signup": {
+      "label": "Создать аккаунт",
+      "redirect_labels": {
+        "email": "Уже есть аккаунт? Войдите!"
+      },
+      "submit": "Зарегестрироваться"
+    },
+    "restore": {
+      "label": "Восстановление пароля",
+      "redirect_labels": {
+        "email": "Впервые тут? Создайте аккаунт!"
+      },
+      "submit": "Восстановить пароль"
+    },
+    "verification": {
+      "label": "Проверка эл. почты",
+      "helper1": "На вашу почту пришло письмо с 6-значным кодом. Введите его ниже, чтобы подтвердить вашу почту.",
+      "helper2": "Если письмо не пришло, проверьте папку \"Спам\" или нажмите на кнопку ниже, чтобы отправить его повторно через {seconds} {seconds, plural, one {секунду} few {секунды} many {секунд} other {секунд}}.",
+      "submit": "Отправить код"
+    },
+    "resend": {
+      "submit": "Отправить код повторно"
+    },
+    "oauth2": {
+      "or": "или",
+      "google": "Google",
+      "facebook": "Facebook"
+    },
+    "logout": {
+      "submit": "Выйти"
+    },
+    "errors": {
+      "invalid_email_format": "Неверный формат эл. почты",
+      "email_already_exists": "Эл. почта уже занята",
+      "email_not_found": "Аккаунт не найден",
+      "email_the_same": "Новая эл. почта не может совпадать с текущей",
+      "password_mismatch": "Пароли не совпадают",
+      "password_too_small": "Мин. длина пароля: 8",
+      "password_only_numbers": "В пароле должна быть буква",
+      "password_only_letters": "В пароле должна быть цифра",
+      "password_incorrect": "Неверный пароль",
+      "password_not_supported": "У аккаунта нет пароля, используйте соц. сети для входа или восстановите пароль",
+      "password_the_same": "Новый пароль не может совпадать с текущим",
+      "invalid_code": "Неверный код подтверждения",
+      "code_too_short": "Код состоит из 6 символов"
+    },
+    "fields": {
+      "email": "Эл. почта",
+      "backup_email": "Резервная эл. почта",
+      "password": "Пароль",
+      "password2": "Повторите пароль",
+      "code": "6-значный код",
+      "remember_me": "Запомнить меня"
+    },
+    "save": "Сохранить",
+    "cancel": "Отмена"
+  },
+  "Error": {
+    "401": {
+      "title": "Страница недоступна",
+      "desc": "Эта страница доступна только зарегестрированным пользователям. Войдите в аккаунт, чтобы получить доступ"
+    },
+    "403": {
+      "title": "Страница недоступна",
+      "desc": "У вас недостаточно прав для доступа к этой странице. Возможно, ваш аккаунт не проверен"
+    },
+    "404": {
+      "title": "Страница не найдена",
+      "desc": "К сожалению, запрашиваемая страница не существует. Возможно, она была перемещена или удалена."
+    },
+    "500": {
+      "title": "Ошибка сервера",
+      "desc": "К сожалению, произошла ошибка. Попробуйте позже"
+    },
+    "home": "На главную",
+    "back": "Назад"
+  }
+}

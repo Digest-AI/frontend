@@ -1,1 +1,156 @@
-{}
+{
+  "Header": {
+    "brand": "Digest.ai",
+    "navEvents": "Evenimente",
+    "navRecommendations": "Recomandări",
+    "navTelegram": "Telegram",
+    "themeToggleAria": "Temă luminos sau întunecat",
+    "languageAria": "Limba",
+    "loginAria": "Autentificare"
+  },
+  "Footer": {
+    "brand": "Digest.ai",
+    "tagline": "Evenimente și bilete aproape de tine.",
+    "contactTitle": "Contacte",
+    "emailLabel": "Email",
+    "phoneLabel": "Telefon",
+    "contactEmail": "hello@digest.ai",
+    "contactPhoneRaw": "+37360111222",
+    "contactPhoneDisplay": "+373 60 111 222",
+    "followTitle": "Rețele sociale",
+    "telegramUrl": "https://t.me/TheDigestAIBot",
+    "telegramAria": "Digest AI pe Telegram",
+    "facebookUrl": "https://www.facebook.com/",
+    "facebookAria": "Digest AI pe Facebook",
+    "instagramUrl": "https://www.instagram.com/",
+    "instagramAria": "Digest AI pe Instagram",
+    "providersTitle": "Surse evenimente",
+    "copyright": "Toate drepturile rezervate.",
+    "privacy": "Confidențialitate",
+    "terms": "Termeni de utilizare"
+  },
+  "Landing": {
+    "title": "Digest AI",
+    "tagline": "Orice eveniment aproape de tine, chiar azi — concerte, întâlniri, premiere într-un singur loc.",
+    "ctaEvents": "Vezi evenimente",
+    "ctaRegister": "Înregistrează-te",
+    "ctaLearnMore": "Află mai mult",
+    "providersTitle": "Furnizori de evenimente",
+    "providersIntro1": "Digest AI adună afișe de pe platforme verificate și te ajută să nu ratezi evenimente interesante aproape de tine.",
+    "providersIntro2": "Algoritmii noștri iau în considerare preferințele tale și îți propun recomandări personale — concerte, întâlniri, cinema și multe altele.",
+    "providersIntro3": "Alege ce rezonează cu tine și treci la bilete într-un singur clic.",
+    "eventsTitle": "Evenimente în următoarele 7 zile",
+    "eventsEmpty": "Încă nu sunt evenimente pentru această săptămână.",
+    "eventsSeeMore": "Vezi altele",
+    "recommendationsTitle": "Recomandări personalizate",
+    "recommendationsHint": "Autentifică-te — îți vom propune evenimente potrivite intereselor și preferințelor tale.",
+    "recommendationsLogin": "Autentificare",
+    "eventFields": {
+      "openDetails": "Detalii eveniment",
+      "close": "Închide",
+      "slug": "Slug",
+      "url": "Pagina evenimentului",
+      "dates": "Perioadă",
+      "dateStart": "Început",
+      "dateEnd": "Sfârșit",
+      "location": "Locație",
+      "address": "Adresă",
+      "place": "Locație",
+      "city": "Oraș",
+      "price": "Preț",
+      "provider": "Furnizor",
+      "providerSite": "Site",
+      "categories": "Categorii",
+      "description": "Descriere",
+      "externalId": "ID extern",
+      "ticketsUrl": "Bilete",
+      "createdAt": "Adăugat"
+    }
+  },
+  "Auth": {
+    "login": {
+      "label": "Intrați în contul",
+      "redirect_labels": {
+        "email": "Nu ai cont? Creează unul!",
+        "password": "Ai uitat parola?"
+      },
+      "submit": "Intră"
+    },
+    "signup": {
+      "label": "Creează un cont",
+      "redirect_labels": {
+        "email": "Ai deja un cont? Intră!"
+      },
+      "submit": "Creează"
+    },
+    "restore": {
+      "label": "Recuperare parolă",
+      "redirect_labels": {
+        "email": "Nu ai cont? Creează unul!"
+      },
+      "submit": "Recuperare parolă"
+    },
+    "verification": {
+      "label": "Verificare email",
+      "helper1": "Un email cu un cod de 6 cifre a fost trimis la adresa ta de email. Introduce-l mai jos pentru a verifica-ți emailul.",
+      "helper2": "Dacă emailul nu a ajuns, verifică folderul \"Spam\" sau apasă butonul de mai jos pentru a-l retrimite prin {seconds} {seconds, plural, one {secundă} few {secunde} many {secunde} other {secunde}}.",
+      "submit": "Trimite cod"
+    },
+    "resend": {
+      "submit": "Re-trimite cod"
+    },
+    "oauth2": {
+      "or": "sau",
+      "google": "Google",
+      "facebook": "Facebook"
+    },
+    "logout": {
+      "submit": "Ieșire"
+    },
+    "errors": {
+      "invalid_email_format": "Format email invalid",
+      "email_already_exists": "Email deja existent",
+      "email_not_found": "Cont nu a fost găsit",
+      "email_the_same": "Noua adresă de email nu poate fi aceeași ca cea curentă",
+      "password_mismatch": "Parolele nu coincid",
+      "password_too_small": "Lungime minimă a parolei: 8",
+      "password_only_numbers": "Parola trebuie să conțină o literă",
+      "password_only_letters": "Parola trebuie să conțină un număr",
+      "password_incorrect": "Parolă incorectă",
+      "password_not_supported": "Account nu are parolă, folosește rețelele sociale pentru a intra sau pentru a restaura parola",
+      "password_the_same": "Noua parolă nu poate fi aceeași ca cea curentă",
+      "invalid_code": "Cod de verificare invalid",
+      "code_too_short": "Codul trebuie să fie de 6 caractere"
+    },
+    "fields": {
+      "email": "Email",
+      "backup_email": "Email de backup",
+      "password": "Parolă",
+      "password2": "Repetă parola",
+      "code": "Cod de 6 cifre",
+      "remember_me": "Ține-mă minte"
+    },
+    "save": "Salvați",
+    "cancel": "Anulează"
+  },
+  "Error": {
+    "401": {
+      "title": "Pagina nu este disponibilă",
+      "desc": "Această pagină este disponibilă numai pentru utilizatorii înregistrați. Conectați-vă la contul dvs. pentru a obține acces"
+    },
+    "403": {
+      "title": "Pagina nu este disponibilă",
+      "desc": "Nu aveți suficiente drepturi pentru a accesa această pagină. Poate că contul dvs. nu este verificat"
+    },
+    "404": {
+      "title": "Pagina nu a fost găsită",
+      "desc": "Din păcate, pagina solicitată nu există. Poate că a fost mutat sau șters."
+    },
+    "500": {
+      "title": "Eroare de server",
+      "desc": "Din păcate, a apărut o eroare. Vă rugăm să încercați din nou mai târziu"
+    },
+    "home": "Acasă",
+    "back": "Înapoi"
+  }
+}

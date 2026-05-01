@@ -1,4 +1,8 @@
-import { stackMiddlewares, localesMiddlewareFactory } from "@/middlewareStack";
+import {
+  stackMiddlewares,
+  authMiddlewareFactory,
+  localesMiddlewareFactory,
+} from "@/middlewareStack";
 
-const middlewares = [localesMiddlewareFactory];
+const middlewares = [authMiddlewareFactory, localesMiddlewareFactory];
 export default stackMiddlewares(middlewares);
