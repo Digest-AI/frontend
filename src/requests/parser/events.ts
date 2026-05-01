@@ -95,3 +95,22 @@ export function fetchEvent(id: number) {
     method: "GET",
   });
 }
+
+export type EventsByIdsQuery = {
+  ordering?: string;
+  page?: number;
+  page_size?: number;
+  search?: string;
+};
+
+/**
+ * Несколько событий по списку id: POST `{ "ids": [...] }`, пагинация и фильтры — query.
+ */
+export function fetchEventsByIds(ids: number[], query?: EventsByIdsQuery) {
+  return parserClient.request<IEventList>({
+    url: "events/by-ids/",
+    method: "POST",
+    data: { ids },
+    params: query,
+  });
+}

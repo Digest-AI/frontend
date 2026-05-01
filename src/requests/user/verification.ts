@@ -1,7 +1,8 @@
 import type {
   ITokens,
   IVerificationRequired,
-  IVerificationRequest,
+  IEmailVerificationRequest,
+  IPasswordVerificationRequest,
 } from "@/types";
 import { post } from "./client";
 
@@ -15,9 +16,20 @@ export async function sendCodeResendRequest(
   );
 }
 
-export async function sendVerificationRequest(request: IVerificationRequest) {
-  return post<IVerificationRequest, ITokens>(
-    `/auth/${request.purpose === "verify_email" ? "register" : "restore"}/confirm`,
+export async function sendEmailVerificationRequest(
+  request: IEmailVerificationRequest,
+) {
+  return post<IEmailVerificationRequest, ITokens>(
+    `auth/email/confirm`,
+    request,
+  );
+}
+
+export async function sendPasswordVerificationRequest(
+  request: IPasswordVerificationRequest,
+) {
+  return post<IPasswordVerificationRequest, ITokens>(
+    `auth/password/confirm`,
     request,
   );
 }

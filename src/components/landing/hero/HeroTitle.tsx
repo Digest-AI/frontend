@@ -19,10 +19,11 @@ export function HeroTitle({ reduce, title }: HeroTitleProps) {
           sm: "clamp(4rem, 11vw, 5.5rem)",
           md: "clamp(5rem, 11vw, 7rem)",
         },
-        lineHeight: 1.05,
+        lineHeight: 1.12,
         fontWeight: 800,
         letterSpacing: "-0.04em",
         textAlign: "center",
+        overflow: "visible",
         "@keyframes heroTitleShimmer": {
           "0%": { backgroundPosition: "0% 50%" },
           "33%": { backgroundPosition: "70% 50%" },
@@ -36,6 +37,10 @@ export function HeroTitle({ reduce, title }: HeroTitleProps) {
         sx={{
           display: "inline-block",
           maxWidth: "100%",
+          overflow: "visible",
+          paddingBottom: "0.06em",
+          boxDecorationBreak: "clone",
+          WebkitBoxDecorationBreak: "clone",
           backgroundImage: reduce
             ? "linear-gradient(118deg, #ede9fe 10%, #a78bfa 38%, #2dd4bf 68%, #c4b5fd 92%)"
             : `

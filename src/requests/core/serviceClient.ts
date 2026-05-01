@@ -1,11 +1,11 @@
 import axios, { AxiosError } from "axios";
 import { setupCache, type CacheRequestConfig } from "axios-cache-interceptor";
 import { createNamespacedStorage, type ServiceName } from "./storage";
-import { IError } from "@/types";
+import type { IError } from "@/types";
 import { getLocale } from "next-intl/server";
 
 type RequestFn = <T>(
-  requestConfig: CacheRequestConfig & { requiresAuth?: boolean },
+  requestConfig: CacheRequestConfig,
   customToken?: string,
 ) => ResWithError<T>;
 

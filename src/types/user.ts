@@ -4,7 +4,7 @@ export type ICredentials = {
   rememberMe?: boolean;
 };
 
-export type IAuthUser = ICredentials & {
+export type IAuthUser = Pick<ICredentials, "email"> & {
   publicId: string;
   isVerified: boolean;
   name: string;
@@ -17,12 +17,16 @@ export type IVerificationRequired = {
   purpose: "verify_email" | "restore_password";
 };
 
-export type IVerificationRequest = {
+export type IEmailVerificationRequest = {
   email: string;
   code: string;
-  password: string;
-  purpose: "verify_email" | "restore_password";
-  rememberMe?: boolean;
+  rememberMe: boolean;
+};
+
+export type IPasswordVerificationRequest = {
+  email: string;
+  code: string;
+  newPassword: string;
 };
 
 export type RefreshTokenRequest = {
@@ -30,7 +34,10 @@ export type RefreshTokenRequest = {
 };
 
 export type ITokens = {
-  access: string;
-  refresh: string;
-  longRefresh: boolean;
+  publicId: string;
+  accessToken: string;
+  refreshToken: string;
+  accessTokenExpiresAt: string;
+  refreshTokenExpiresAt: string;
+  rememberMe: boolean;
 };

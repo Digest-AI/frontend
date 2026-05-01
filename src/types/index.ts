@@ -8,11 +8,14 @@ export type {
   IEventList,
 } from "./parser";
 
+export type { IUser, IRecommendation } from "./recommendations";
+
 export type {
   ICredentials,
   IAuthUser,
   IVerificationRequired,
   ITokens,
-  IVerificationRequest,
+  IEmailVerificationRequest,
+  IPasswordVerificationRequest,
   RefreshTokenRequest,
 } from "./user";

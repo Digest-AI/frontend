@@ -1,5 +1,5 @@
 import { redirect } from "@/i18n";
-import { IError } from "@/types";
+import type { IError } from "@/types";
 
 type Data = object | Array<object> | null;
 type ManualHandler<T> = {

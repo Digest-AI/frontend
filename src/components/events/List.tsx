@@ -16,6 +16,8 @@ import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
+import { Category } from "@/components/category";
+
 import { getEventDetail } from "@/app/actions";
 import { isError } from "@/requests";
 import type { IDetailedEvent, IEvent } from "@/types/parser";
@@ -34,9 +36,11 @@ import { getProviderChipSx, hasProviderBrandColor } from "./providerStyle";
 export type EventListProps = {
   events: IEvent[];
   layoutGroupId?: string;
+  /** id событий, для которых показывается бейдж «новое». */
+  newEventIds?: Set<number>;
 };
 
-export function EventList({ events, layoutGroupId }: EventListProps) {
+export function EventList({ events, layoutGroupId, newEventIds }: EventListProps) {
   const locale = useLocale();
   const t = useTranslations("Landing");
   const [openId, setOpenId] = useState<number | null>(null);
@@ -91,6 +95,8 @@ export function EventList({ events, layoutGroupId }: EventListProps) {
         sx={{
           display: "grid",
           gap: 2.5,
+          width: "100%",
+          textAlign: "left",
           gridTemplateColumns: {
             xs: "1fr",
             sm: "repeat(2, 1fr)",
@@ -115,6 +121,7 @@ export function EventList({ events, layoutGroupId }: EventListProps) {
               key={event.id}
               event={event}
               onOpen={() => setOpenId(event.id)}
+              showNewBadge={newEventIds?.has(event.id)}
             />
           ),
         )}
@@ -317,8 +324,9 @@ export function EventList({ events, layoutGroupId }: EventListProps) {
                   sx={{ flexWrap: "wrap", mb: 1 }}
                 >
                   {preview.categories.map((c) => (
-                    <Chip
+                    <Category
                       key={c.id}
+                      slug={c.slug}
                       label={categoryLabel(c, locale)}
                       size="small"
                     />

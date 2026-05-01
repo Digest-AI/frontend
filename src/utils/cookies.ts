@@ -1,6 +1,6 @@
-import { createToken, createRefreshTTL } from "@/app/actions";
+import { createToken, createPublicId, createRefreshTTL } from "@/app/actions";
 import { NextRequest, NextResponse } from "next/server";
-import { ITokens } from "@/types";
+import type { ITokens } from "@/types";
 
 export async function updateResponseCookie(
   response: NextResponse,
@@ -16,7 +16,7 @@ export async function updateResponseCookie(
 
 export function extractRequestToken(
   request: NextRequest,
-  type: "access" | "refresh" | "subscriptions",
+  type: "access" | "refresh",
 ) {
   return request.cookies.get(`${type}_token`)?.value;
 }
@@ -32,15 +32,22 @@ export async function updateResponseTokens(
   response: NextResponse,
   tokens: ITokens,
 ) {
-  response = await updateResponseCookie(response, "access", tokens.access);
+  response = await updateResponseCookie(response, "access", tokens.accessToken);
   response = await updateResponseCookie(
     response,
     "refresh",
-    tokens.refresh,
-    tokens.longRefresh,
+    tokens.refreshToken,
+    tokens.rememberMe,
   );
+  const publicIdCookie = await createPublicId(tokens.publicId);
+  const {
+    name: publicIdName,
+    value: publicIdValue,
+    ...publicIdOptions
+  } = publicIdCookie;
+  response.cookies.set(publicIdName, publicIdValue, publicIdOptions);
 
-  const refreshTokenLongCookie = await createRefreshTTL(tokens.longRefresh);
+  const refreshTokenLongCookie = await createRefreshTTL(tokens.rememberMe);
   const {
     name: refreshTokenLongName,
     value: refreshTokenLongValue,
@@ -59,6 +66,7 @@ export function createAuthRedirect(request: NextRequest): NextResponse {
   const redirectResponse = NextResponse.redirect(
     new URL("/auth", request.nextUrl.origin),
   );
+  redirectResponse.cookies.delete("public_id");
   redirectResponse.cookies.delete("refresh_token");
   redirectResponse.cookies.delete("refresh_token_long");
   return redirectResponse;

@@ -7,15 +7,20 @@ import { format, parseISO } from "date-fns";
 import { ro, ru } from "date-fns/locale";
 
 import Box from "@mui/material/Box";
+import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 
 import type { IEvent } from "@/types/parser";
 
-import { eventTitle } from "./eventLocale";
+import { Category } from "@/components/category";
+
+import { categoryLabel, eventTitle } from "./eventLocale";
 
 export type EventItemProps = {
   event: IEvent;
   onOpen: () => void;
+  /** Бейдж «новое» (например, в общем списке рекомендаций). */
+  showNewBadge?: boolean;
 };
 
 const LAYOUT_PREFIX = "event-card";
@@ -24,9 +29,10 @@ export function eventLayoutId(id: number) {
   return `${LAYOUT_PREFIX}-${id}`;
 }
 
-export function EventItem({ event, onOpen }: EventItemProps) {
+export function EventItem({ event, onOpen, showNewBadge }: EventItemProps) {
   const locale = useLocale();
   const t = useTranslations("Landing");
+  const tRec = useTranslations("RecommendationsPage");
   const title = eventTitle(event, locale);
   const dfLocale = locale === "ru" ? ru : ro;
   const dateLabel = (() => {
@@ -61,6 +67,8 @@ export function EventItem({ event, onOpen }: EventItemProps) {
         height: "100%",
         display: "flex",
         flexDirection: "column",
+        alignItems: "stretch",
+        textAlign: "left",
         background:
           "linear-gradient(180deg, rgba(30,27,48,0.96) 0%, rgba(18,16,30,0.98) 100%)",
         border: "1px solid rgba(255,255,255,0.08)",
@@ -92,6 +100,21 @@ export function EventItem({ event, onOpen }: EventItemProps) {
             pointerEvents: "none",
           }}
         />
+        {showNewBadge ? (
+          <Chip
+            label={tRec("newBadge")}
+            size="small"
+            color="secondary"
+            sx={{
+              position: "absolute",
+              top: 10,
+              left: 10,
+              fontWeight: 700,
+              backdropFilter: "blur(8px)",
+              bgcolor: "rgba(18,16,30,0.72)",
+            }}
+          />
+        ) : null}
       </Box>
       <Box sx={{ p: 2, pt: 1.5, flex: 1, textAlign: "left" }}>
         <Typography
@@ -119,10 +142,30 @@ export function EventItem({ event, onOpen }: EventItemProps) {
         <Typography
           variant="caption"
           color="text.secondary"
-          sx={{ mt: 0.25, display: "block" }}
+          sx={{ mt: 0.25, display: "block", mb: 0.75 }}
         >
           {[event.city, event.place].filter(Boolean).join(" · ")}
         </Typography>
+        {event.categories.length > 0 ? (
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 0.5,
+              mt: "auto",
+              pt: 0.5,
+            }}
+          >
+            {event.categories.slice(0, 4).map((c) => (
+              <Category
+                key={c.id}
+                slug={c.slug}
+                label={categoryLabel(c, locale)}
+                size="small"
+              />
+            ))}
+          </Box>
+        ) : null}
       </Box>
     </motion.article>
   );

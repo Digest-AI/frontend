@@ -17,7 +17,6 @@ import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import Pagination from "@mui/material/Pagination";
 import Select from "@mui/material/Select";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
@@ -35,7 +34,10 @@ import {
 } from "@/requests/parser";
 import type { ICategory, IEventList, IProvider } from "@/types/parser";
 
+import { Category } from "@/components/category";
+
 import { EventsPeriodSelector } from "./EventsPeriodSelector";
+import { EventsPagination } from "./EventsPagination";
 import { categoryLabel } from "./eventLocale";
 import { EventList } from "./List";
 
@@ -295,7 +297,27 @@ export function EventsBrowsePage() {
                       <MenuItem value="">{t("all")}</MenuItem>
                       {categories.map((c) => (
                         <MenuItem key={c.id} value={c.slug}>
-                          {categoryLabel(c, locale)} ({c.count})
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 1,
+                              py: 0.25,
+                            }}
+                          >
+                            <Category
+                              slug={c.slug}
+                              label={categoryLabel(c, locale)}
+                              size="small"
+                            />
+                            <Typography
+                              variant="body2"
+                              component="span"
+                              color="text.secondary"
+                            >
+                              ({c.count})
+                            </Typography>
+                          </Box>
                         </MenuItem>
                       ))}
                     </Select>
@@ -395,16 +417,12 @@ export function EventsBrowsePage() {
         ) : list ? (
           <>
             <EventList events={list.results} layoutGroupId="events-browse" />
-            {pageCount > 1 ? (
-              <Box sx={{ display: "flex", justifyContent: "center", pt: 1 }}>
-                <Pagination
-                  count={pageCount}
-                  page={page}
-                  onChange={(_, p) => setPage(p)}
-                  color="primary"
-                />
-              </Box>
-            ) : null}
+            <EventsPagination
+              count={pageCount}
+              page={page}
+              onPageChange={setPage}
+              ariaLabel={t("paginationAria")}
+            />
           </>
         ) : null}
       </Stack>

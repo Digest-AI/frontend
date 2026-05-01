@@ -12,7 +12,7 @@ export default async function Page() {
   const loggedIn = await isLoggedIn();
 
   if (loggedIn) {
-    await redirect("/core");
+    await redirect("/");
     return;
   }
 

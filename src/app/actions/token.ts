@@ -1,7 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { ITokens } from "@/types";
+import type { ITokens } from "@/types";
 
 export async function getToken(type = "access") {
   const cookieStore = await cookies();
@@ -26,12 +26,12 @@ export async function createRefreshTTL(longRefresh = false) {
 export async function createToken(
   type: string,
   token: string,
-  longRefresh = false,
+  rememberMe = false,
 ) {
   return {
     name: `${type}_token`,
     value: token,
-    maxAge: type === "refresh" ? (longRefresh ? 2_592_000 : 86_400) : 1_800, //30 days or 1 day or 30 minutes
+    maxAge: type === "refresh" ? (rememberMe ? 2_592_000 : 604_800) : 900, //30 days or 7 days or 15 minutes
     path: "/",
     secure: true,
     httpOnly: true,
@@ -53,9 +53,10 @@ export async function createPublicId(publicId: string) {
 export async function setTokens(tokens: ITokens) {
   const cookieStore = await cookies();
   const [accessToken, refreshToken, refreshTokenLong] = await Promise.all([
-    createToken("access", tokens.access),
-    createToken("refresh", tokens.refresh, tokens.longRefresh),
-    createRefreshTTL(tokens.longRefresh),
+    createPublicId(tokens.publicId),
+    createToken("access", tokens.accessToken),
+    createToken("refresh", tokens.refreshToken, tokens.rememberMe),
+    createRefreshTTL(tokens.rememberMe),
   ]);
   cookieStore.set(accessToken);
   cookieStore.set(refreshToken);
