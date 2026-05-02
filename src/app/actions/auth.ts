@@ -9,10 +9,10 @@ import {
   sendEmailVerificationRequest,
   sendPasswordVerificationRequest,
   sendLogoutRequest,
+  isError,
 } from "@/requests";
 import { deletePublicId, deleteTokens, setTokens } from "./token";
 import type { ITokens, IVerificationRequired, IError } from "@/types";
-import { isError } from "@/requests";
 
 type Validatable<T = string> = { value: T; error: string };
 

@@ -31,3 +31,4 @@ export {
   type RecommendationFeedMode,
   type LoadRecommendationEventsOptions,
 } from "./recommendationsFeed";
+export { verifyTelegramLink } from "./tgProfile";

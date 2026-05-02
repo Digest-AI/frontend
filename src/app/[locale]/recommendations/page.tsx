@@ -1,8 +1,7 @@
 import { isLoggedIn, loadRecommendationFeed } from "@/app/actions";
 import { RecommendationsPageClient } from "@/components/recommendations";
 import { redirect } from "@/i18n";
-import { isError } from "@/requests";
-import { fetchAuthUser } from "@/requests/user";
+import { isError, fetchAuthUser } from "@/requests";
 
 export default async function RecommendationsPage() {
   if (!(await isLoggedIn())) {

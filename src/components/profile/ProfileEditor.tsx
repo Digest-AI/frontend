@@ -4,12 +4,14 @@ import { useMemo, useState, useTransition } from "react";
 import { useTranslations } from "next-intl";
 
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 import {
   createRecommendationsProfile,
+  logoutThis,
   saveAuthUserProfile,
   updateRecommendationsProfile,
 } from "@/app/actions";
@@ -17,10 +19,12 @@ import { CATEGORY_SLUGS } from "@/components/category";
 import { isError } from "@/requests";
 import type { IAuthUser, IUser } from "@/types";
 
+import type { ProfileTelegramInitial } from "./editor/ProfileTelegramPanel";
 import { ProfileAccountForm } from "./editor/ProfileAccountForm";
 import { ProfileEmailCard } from "./editor/ProfileEmailCard";
 import { ProfilePasswordCard } from "./editor/ProfilePasswordCard";
 import { ProfilePreferencesPanel } from "./editor/ProfilePreferencesPanel";
+import { ProfileTelegramPanel } from "./editor/ProfileTelegramPanel";
 import {
   categoriesFromUser,
   normalizeGender,
@@ -31,6 +35,7 @@ type Props = {
   initialPreferences: IUser;
   recommendationsMissing: boolean;
   preferencesLoadError: string | null;
+  telegramInitial: ProfileTelegramInitial;
 };
 
 export function ProfileEditor({
@@ -38,6 +43,7 @@ export function ProfileEditor({
   initialPreferences,
   recommendationsMissing,
   preferencesLoadError,
+  telegramInitial,
 }: Props) {
   const t = useTranslations("Profile");
   const [user, setUser] = useState<IAuthUser>(initialUser);
@@ -71,6 +77,8 @@ export function ProfileEditor({
   const [prefError, setPrefError] = useState<string | null>(null);
   const [prefSaved, setPrefSaved] = useState(false);
   const [prefPending, startPrefTransition] = useTransition();
+
+  const [logoutPending, startLogoutTransition] = useTransition();
 
   function toggleCategory(slug: string) {
     setPickedCategories((prev) => {
@@ -215,6 +223,22 @@ export function ProfileEditor({
               onDismissError={() => setAccountError(null)}
               onSubmit={submitAccount}
             />
+            <Button
+              type="button"
+              variant="outlined"
+              color="error"
+              disabled={
+                logoutPending || accountPending || prefPending
+              }
+              onClick={() => {
+                startLogoutTransition(() => {
+                  void logoutThis();
+                });
+              }}
+              sx={{ alignSelf: "flex-start" }}
+            >
+              {logoutPending ? t("loggingOut") : t("logout")}
+            </Button>
           </Stack>
 
           <ProfilePreferencesPanel
@@ -237,6 +261,8 @@ export function ProfileEditor({
             onSubmitPreferences={submitPreferences}
           />
         </Box>
+
+        <ProfileTelegramPanel publicId={user.publicId} initial={telegramInitial} />
       </Stack>
     </Container>
   );

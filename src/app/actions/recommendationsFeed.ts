@@ -1,11 +1,11 @@
 "use server";
 
-import { isError } from "@/requests";
-import { fetchEventsByIds } from "@/requests/parser";
 import {
+  isError,
+  fetchEventsByIds,
   fetchNewRecommendations,
   fetchRecommendations,
-} from "@/requests/recommendations/recommendations";
+} from "@/requests";
 import type { IEventList } from "@/types/parser";
 
 export type RecommendationFeedMode = "all" | "new";

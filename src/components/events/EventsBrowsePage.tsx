@@ -27,11 +27,11 @@ import {
   getParserCategories,
   getParserSources,
 } from "@/app/actions";
-import { isError } from "@/requests";
 import {
+  isError,
   listDateRangeForPreset,
   type EventsPeriodPreset,
-} from "@/requests/parser";
+} from "@/requests";
 import type { ICategory, IEventList, IProvider } from "@/types/parser";
 
 import { Category } from "@/components/category";

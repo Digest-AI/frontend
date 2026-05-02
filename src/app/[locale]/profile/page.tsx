@@ -1,9 +1,8 @@
 import { isLoggedIn } from "@/app/actions";
 import { fetchRecommendationsProfile } from "@/app/actions/recommendationsProfile";
-import { ProfileEditor } from "@/components/profile";
+import { ProfileEditor, type ProfileTelegramInitial } from "@/components/profile";
 import { redirect } from "@/i18n";
-import { isError } from "@/requests";
-import { fetchAuthUser } from "@/requests/user";
+import { fetchTGUser, isError, fetchAuthUser } from "@/requests";
 import type { IUser } from "@/types";
 
 function emptyPreferences(publicId: string): IUser {
@@ -46,12 +45,28 @@ export default async function ProfilePage() {
     recommendationsMissing = false;
   }
 
+  const tgRes = await fetchTGUser(res.publicId);
+  let telegramInitial: ProfileTelegramInitial;
+  if (isError(tgRes)) {
+    if (tgRes.code === 404) {
+      telegramInitial = { kind: "not_linked" };
+    } else {
+      telegramInitial = {
+        kind: "load_error",
+        message: tgRes.detail?.trim() ? tgRes.detail : null,
+      };
+    }
+  } else {
+    telegramInitial = { kind: "linked", user: tgRes };
+  }
+
   return (
     <ProfileEditor
       initialUser={res}
       initialPreferences={initialPreferences}
       recommendationsMissing={recommendationsMissing}
       preferencesLoadError={preferencesLoadError}
+      telegramInitial={telegramInitial}
     />
   );
 }

@@ -4,8 +4,7 @@ import {
   ProvidersSection,
   RecommendationsCta,
 } from "@/components/landing";
-import { fetchEventsForLanding } from "@/requests/parser";
-import { isError } from "@/requests";
+import { fetchEventsForLanding, isError } from "@/requests";
 
 export default async function Page() {
   const eventsRes = await fetchEventsForLanding();

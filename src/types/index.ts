@@ -10,6 +10,8 @@ export type {
 
 export type { IUser, IRecommendation } from "./recommendations";
 
+export type { ITGUser, ITGVerficationRequest } from "./tg";
+
 export type {
   ICredentials,
   IAuthUser,
