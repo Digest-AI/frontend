@@ -28,7 +28,7 @@ async function handleResponse(
   response: ITokens | IVerificationRequired | IError,
   state: AuthFormState,
 ): Promise<AuthFormState> {
-  console.error(JSON.stringify(response, null, 2));
+  console.log(JSON.stringify(response, null, 2));
   if (isError(response)) {
     switch (response.attr) {
       case "email":
@@ -82,6 +82,7 @@ export async function dispatchAuthAction(
       }
 
       if (isError(response) && response.code === 404) {
+        console.log(response, state);
         return { ...state, type: "signup" };
       }
       break;
