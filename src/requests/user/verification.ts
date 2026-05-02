@@ -20,7 +20,7 @@ export async function sendEmailVerificationRequest(
   request: IEmailVerificationRequest,
 ) {
   return post<IEmailVerificationRequest, ITokens>(
-    `auth/email/confirm`,
+    `auth/register/confirm`,
     request,
   );
 }
@@ -29,7 +29,7 @@ export async function sendPasswordVerificationRequest(
   request: IPasswordVerificationRequest,
 ) {
   return post<IPasswordVerificationRequest, ITokens>(
-    `auth/password/confirm`,
+    `auth/restore/confirm`,
     request,
   );
 }
