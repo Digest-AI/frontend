@@ -165,10 +165,24 @@
     "savingAccount": "Сохранение аккаунта…",
     "savedAccount": "Данные аккаунта сохранены.",
     "saveErrorAccount": "Не удалось сохранить данные аккаунта.",
+    "logout": "Выйти из аккаунта",
+    "loggingOut": "Выход…",
     "savePreferences": "Сохранить предпочтения",
     "savingPreferences": "Сохранение предпочтений…",
     "savedPreferences": "Предпочтения сохранены.",
-    "saveErrorPreferences": "Не удалось сохранить предпочтения."
+    "saveErrorPreferences": "Не удалось сохранить предпочтения.",
+    "sectionTelegram": "Telegram",
+    "telegramLinkedIntro": "Аккаунт привязан к боту Digest AI.",
+    "telegramIdLabel": "Telegram ID",
+    "telegramNotLinkedIntro": "Чтобы привязать аккаунт, откройте нашего бота по ссылке ниже, нажмите «Старт» и введите код из 6 символов (буквы и цифры) из сообщения бота в поле ниже.",
+    "telegramOpenBot": "Открыть бота в Telegram",
+    "telegramCodeLabel": "Код из Telegram",
+    "telegramVerify": "Подтвердить",
+    "telegramVerifying": "Проверка…",
+    "telegramVerifyError": "Не удалось подтвердить код. Проверьте код и попробуйте снова.",
+    "telegramLoadError": "Не удалось проверить привязку Telegram: {message}",
+    "telegramLoadErrorGeneric": "Не удалось проверить привязку Telegram. Обновите страницу позже.",
+    "telegramCodeInvalid": "Введите код из 6 символов (буквы и цифры)."
   },
   "Auth": {
     "login": {

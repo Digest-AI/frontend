@@ -8,7 +8,7 @@ import {
   fetchProviders,
   type EventsListQuery,
   type EventsPeriodPreset,
-} from "@/requests/parser";
+} from "@/requests";
 
 export async function getEventDetail(id: number) {
   return fetchEvent(id);

@@ -6,8 +6,7 @@ import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
-import { fetchProviders } from "@/requests/parser";
-import { isError } from "@/requests";
+import { fetchProviders, isError } from "@/requests";
 
 import { landingSectionScrollMarginSx, LANDING_SECTION_IDS } from "../sections";
 

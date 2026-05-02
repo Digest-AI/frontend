@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { alpha } from "@mui/material/styles";
 
-import type { EventsPeriodPreset } from "@/requests/parser";
+import type { EventsPeriodPreset } from "@/requests";
 
 const PRESET_ICONS: Record<EventsPeriodPreset, SvgIconComponent> = {
   "this-week": CalendarViewWeekRounded,

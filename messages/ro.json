@@ -165,10 +165,24 @@
     "savingAccount": "Se salvează contul…",
     "savedAccount": "Datele contului au fost salvate.",
     "saveErrorAccount": "Datele contului nu au putut fi salvate.",
+    "logout": "Ieșire din cont",
+    "loggingOut": "Se iese…",
     "savePreferences": "Salvează preferințele",
     "savingPreferences": "Se salvează preferințele…",
     "savedPreferences": "Preferințele au fost salvate.",
-    "saveErrorPreferences": "Preferințele nu au putut fi salvate."
+    "saveErrorPreferences": "Preferințele nu au putut fi salvate.",
+    "sectionTelegram": "Telegram",
+    "telegramLinkedIntro": "Contul este legat de botul Digest AI.",
+    "telegramIdLabel": "ID Telegram",
+    "telegramNotLinkedIntro": "Pentru a lega contul, deschideți botul nostru folosind linkul de mai jos, apăsați „Start” și introduceți codul din 6 caractere (litere și cifre) din mesajul botului în câmpul de mai jos.",
+    "telegramOpenBot": "Deschide botul în Telegram",
+    "telegramCodeLabel": "Cod din Telegram",
+    "telegramVerify": "Confirmă",
+    "telegramVerifying": "Se verifică…",
+    "telegramVerifyError": "Codul nu a putut fi confirmat. Verificați codul și încercați din nou.",
+    "telegramLoadError": "Legătura Telegram nu a putut fi verificată: {message}",
+    "telegramLoadErrorGeneric": "Legătura Telegram nu a putut fi verificată. Reîmprospătați pagina mai târziu.",
+    "telegramCodeInvalid": "Introduceți un cod din 6 caractere (litere și cifre)."
   },
   "Auth": {
     "login": {
